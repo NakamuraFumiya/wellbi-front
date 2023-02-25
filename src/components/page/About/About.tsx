@@ -1,6 +1,7 @@
 
 import styled from "styled-components";
 import { useSession, signIn, signOut } from "next-auth/react";
+import Router from "next/router";
 
 const StyledHeaderParent = styled.div`
   display: flex;
@@ -21,20 +22,27 @@ const StyledLoginButton = styled.button`
   color: white;
   background-color: #FF6C6C;
   border: none;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 1rem;
   cursor: pointer;
 `
 
 const StyledLogOutButton = styled.button`
-  //font-size: 1.5rem;
   color: white;
   background-color: cornflowerblue;
   border: none;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 1rem;
   cursor: pointer;
 `
+
+const StyledHeaderButton = styled.button`
+  color: #000000D1;
+  font-size: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+`;
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -84,11 +92,6 @@ const StyledHowItWorks = styled.h2`
   text-align: center;
   font-size: 2.9rem;
   padding-top: 0.5rem;
-`
-
-const StyledContentParent = styled.div`
-  diplay: flex;
-  //flex-direction: row;
 `
 
 const StyledContentFlexBox = styled.div`
@@ -142,7 +145,7 @@ const StyledJoinDescription = styled.h2`
   color: #6E7B85;
 `;
 const StyledJoinButton = styled.button`
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   color: white;
   background-color: #FF6C6C;
   border: none;
@@ -154,7 +157,10 @@ const StyledJoinButton = styled.button`
 `
 
 export const About = () => {
-  const { data: session } = useSession()
+  const { data: session } = useSession();
+  const handler = (path: string) => {
+    Router.push(path)
+  };
 
   return (
     <>
@@ -162,10 +168,13 @@ export const About = () => {
       <div>
         <StyledHeader>
           <StyledHeaderParent>
-            <img src={"/images/common/project/wellbi-logo-icon.png"} width="97.3" height="23" alt="header-icon" />
+            <StyledHeaderButton onClick={()=>handler("/")}>
+              <img src={"/images/common/project/wellbi-logo-icon.png"} width="97.3" height="23" alt="header-icon" />
+
+            </StyledHeaderButton>
             <div>
               <StyledHeaderChild>
-                <a>Wellbiとは？</a>
+                <StyledHeaderButton onClick={() => handler("/")}>Wellbiとは？</StyledHeaderButton>
                 {session ? (
                   <>
                     <a>作成したRoadmapを見る</a>
@@ -178,8 +187,6 @@ export const About = () => {
               </StyledHeaderChild>
             </div>
           </StyledHeaderParent>
-          {/*<img src={"/images/common/project/wellbi-logo-icon.png"} width="97.3" height="23" alt="header-icon" />*/}
-          {/*<StyledLoginButton>Log In</StyledLoginButton>*/}
         </StyledHeader>
         <Spacer />
       </div>
@@ -232,21 +239,21 @@ export const About = () => {
         <Border />
 
         {/*4つ目のブロック*/}
-        <Spacer />
-        <StyledJoinFlexBox>
-          <div>
-            <StyledJoinTitle>Join Wellbi</StyledJoinTitle>
-            <StyledJoinDescription>あなたの実体験やアイディアを共有しよう</StyledJoinDescription>
-            <StyledJoinButton>今すぐはじめる</StyledJoinButton>
-          </div>
-          <img src={"/images/pages/About/book.png"} width={432} height={303} />
-        </StyledJoinFlexBox>
-        <Border />
-
-
+        {!session && (
+          <>
+            <Spacer />
+            <StyledJoinFlexBox>
+              <div>
+                <StyledJoinTitle>Join Wellbi</StyledJoinTitle>
+                <StyledJoinDescription>あなたの実体験やアイディアを共有しよう</StyledJoinDescription>
+                <StyledJoinButton onClick={() => signIn()}>今すぐはじめる</StyledJoinButton>
+              </div>
+              <img src={"/images/pages/About/book.png"} width={432} height={303} />
+            </StyledJoinFlexBox>
+            <Border />
+          </>
+        )}
       </main>
-
-
     </>
   )
 }
