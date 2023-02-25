@@ -59,8 +59,9 @@ const Spacer = styled.div`
 
 type Props = {
   aboutPage?: boolean
+  roadMapNewPage?: boolean
 }
-export const Header = ({aboutPage}: Props) => {
+export const Header = ({aboutPage, roadMapNewPage}: Props) => {
   const { data: session } = useSession();
   const handler = (path: string) => {
     Router.push(path)
@@ -84,7 +85,7 @@ export const Header = ({aboutPage}: Props) => {
               {session ? (
                 <>
                   <StyledHeaderButton>Roadmapを見る</StyledHeaderButton>
-                  <StyledHeaderButton>新規Roadmapを投稿する</StyledHeaderButton>
+                  {!roadMapNewPage && <StyledHeaderButton onClick={() => handler("/roadmaps/new")}>新規Roadmapを投稿する</StyledHeaderButton>}
                   <StyledLogOutButton onClick={() => signOut()}>Log Out</StyledLogOutButton>
                 </>
               ) : (
