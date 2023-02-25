@@ -57,8 +57,10 @@ const Spacer = styled.div`
   padding-top: 4rem;
 `;
 
-
-export const Header = () => {
+type Props = {
+  aboutPage?: boolean
+}
+export const Header = ({aboutPage}: Props) => {
   const { data: session } = useSession();
   const handler = (path: string) => {
     Router.push(path)
@@ -74,7 +76,11 @@ export const Header = () => {
           </StyledHeaderButton>
           <div>
             <StyledHeaderChild>
-              <StyledHeaderButton onClick={() => handler("/")}>Wellbiとは？</StyledHeaderButton>
+              {
+                !aboutPage && (
+                  <StyledHeaderButton onClick={() => handler("/")}>Wellbiとは？</StyledHeaderButton>
+                )
+              }
               {session ? (
                 <>
                   <a>作成したRoadmapを見る</a>

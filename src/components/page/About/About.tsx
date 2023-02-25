@@ -110,10 +110,10 @@ const StyledJoinButton = styled.button`
 
 export const About = () => {
   const { data: session } = useSession();
-  
+
   return (
     <>
-      <Header />
+      <Header aboutPage={true}/>
       <main>
         <Spacer />
         <FlexBoxRow>
