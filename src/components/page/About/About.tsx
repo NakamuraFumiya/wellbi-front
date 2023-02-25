@@ -26,6 +26,16 @@ const StyledLoginButton = styled.button`
   cursor: pointer;
 `
 
+const StyledLogOutButton = styled.button`
+  //font-size: 1.5rem;
+  color: white;
+  background-color: cornflowerblue;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+`
+
 const StyledHeader = styled.header`
   position: fixed;
   top: 0;
@@ -156,10 +166,12 @@ export const About = () => {
             <div>
               <StyledHeaderChild>
                 <a>Wellbiとは？</a>
-                {/*<a>作成したRoadmapを見る</a>*/}
-                {/*<a>新規Roadmapを投稿する</a>*/}
                 {session ? (
-                  <StyledLoginButton onClick={() => signOut()}>Log Out</StyledLoginButton>
+                  <>
+                    <a>作成したRoadmapを見る</a>
+                    <a>新規Roadmapを投稿する</a>
+                    <StyledLogOutButton onClick={() => signOut()}>Log Out</StyledLogOutButton>
+                  </>
                 ) : (
                   <StyledLoginButton onClick={() => signIn()}>Log In</StyledLoginButton>
                 )}
