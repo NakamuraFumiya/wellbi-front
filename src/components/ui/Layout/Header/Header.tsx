@@ -83,8 +83,8 @@ export const Header = ({aboutPage}: Props) => {
               }
               {session ? (
                 <>
-                  <a>作成したRoadmapを見る</a>
-                  <a>新規Roadmapを投稿する</a>
+                  <StyledHeaderButton>Roadmapを見る</StyledHeaderButton>
+                  <StyledHeaderButton>新規Roadmapを投稿する</StyledHeaderButton>
                   <StyledLogOutButton onClick={() => signOut()}>Log Out</StyledLogOutButton>
                 </>
               ) : (
