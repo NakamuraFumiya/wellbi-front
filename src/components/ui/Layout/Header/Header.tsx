@@ -89,7 +89,10 @@ export const Header = ({aboutPage, roadMapNewPage}: Props) => {
                   <StyledLogOutButton onClick={() => signOut()}>Log Out</StyledLogOutButton>
                 </>
               ) : (
-                <StyledLoginButton onClick={() => signIn()}>Log In</StyledLoginButton>
+                <>
+                  <StyledHeaderButton>Roadmapを見る</StyledHeaderButton>
+                  <StyledLoginButton onClick={() => signIn()}>Log In</StyledLoginButton>
+                </>
               )}
             </StyledHeaderChild>
           </div>
