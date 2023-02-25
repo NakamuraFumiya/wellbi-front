@@ -1,5 +1,6 @@
 
 import styled from "styled-components";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const StyledHeaderParent = styled.div`
   display: flex;
@@ -143,6 +144,8 @@ const StyledJoinButton = styled.button`
 `
 
 export const About = () => {
+  const { data: session } = useSession()
+
   return (
     <>
       {/*headerのブロック*/}
@@ -155,7 +158,11 @@ export const About = () => {
                 <a>Wellbiとは？</a>
                 {/*<a>作成したRoadmapを見る</a>*/}
                 {/*<a>新規Roadmapを投稿する</a>*/}
-                <StyledLoginButton>Log In</StyledLoginButton>
+                {session ? (
+                  <StyledLoginButton onClick={() => signOut()}>Log Out</StyledLoginButton>
+                ) : (
+                  <StyledLoginButton onClick={() => signIn()}>Log In</StyledLoginButton>
+                )}
               </StyledHeaderChild>
             </div>
           </StyledHeaderParent>
