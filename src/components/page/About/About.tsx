@@ -1,12 +1,29 @@
 
 import styled from "styled-components";
 
-// const Container = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   width: 100vw;
-//   height: 100vh;
-// `;
+const StyledHeaderParent = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const StyledHeaderChild = styled.div`
+  display: flex;
+  margin-right: 10rem;
+  column-gap: 1rem;
+  align-items: center;
+`;
+
+const StyledLoginButton = styled.button`
+  //font-size: 1.5rem;
+  color: white;
+  background-color: #FF6C6C;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+`
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -18,11 +35,6 @@ const StyledHeader = styled.header`
 
 const Spacer = styled.div`
   padding-top: 4rem;
-`;
-
-const FlexBoxColumn = styled.div`
-  display: flex;
-  flex-direction: column;
 `;
 
 const FlexBoxRow = styled.div`
@@ -136,7 +148,19 @@ export const About = () => {
       {/*headerのブロック*/}
       <div>
         <StyledHeader>
-          <img src={"/images/common/project/wellbi-logo-icon.png"} width="97.3" height="23" alt="header-icon" />
+          <StyledHeaderParent>
+            <img src={"/images/common/project/wellbi-logo-icon.png"} width="97.3" height="23" alt="header-icon" />
+            <div>
+              <StyledHeaderChild>
+                <a>Wellbiとは？</a>
+                {/*<a>作成したRoadmapを見る</a>*/}
+                {/*<a>新規Roadmapを投稿する</a>*/}
+                <StyledLoginButton>Log In</StyledLoginButton>
+              </StyledHeaderChild>
+            </div>
+          </StyledHeaderParent>
+          {/*<img src={"/images/common/project/wellbi-logo-icon.png"} width="97.3" height="23" alt="header-icon" />*/}
+          {/*<StyledLoginButton>Log In</StyledLoginButton>*/}
         </StyledHeader>
         <Spacer />
       </div>
@@ -196,7 +220,7 @@ export const About = () => {
             <StyledJoinDescription>あなたの実体験やアイディアを共有しよう</StyledJoinDescription>
             <StyledJoinButton>今すぐはじめる</StyledJoinButton>
           </div>
-          <img src={"/images/pages/About/book.png"} width={392} height={213} />
+          <img src={"/images/pages/About/book.png"} width={432} height={303} />
         </StyledJoinFlexBox>
         <Border />
 
