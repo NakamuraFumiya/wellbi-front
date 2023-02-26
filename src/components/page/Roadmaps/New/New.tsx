@@ -11,6 +11,7 @@ import {AutoFocusPlugin} from "@/components/page/Roadmaps/Plugins/AutoFocus/Auto
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { nodes } from "./nodes";
 import {ToolbarPlugin} from "@/components/page/Roadmaps/Plugins/Toolbar/ToolbarPlugin";
+import {NewRoadmapHeader} from "@/components/ui/Layout/Header/NewRoadmapHeader";
 
 const Spacer = styled.div`
   padding-top: 4rem;
@@ -27,13 +28,14 @@ export const New = () => {
 
   return (
     <>
-      <Header />
+      <NewRoadmapHeader />
       {session ? (
         <>
           <Spacer />
           <LexicalComposer initialConfig={initialConfig}>
             <ToolbarPlugin />
             <div className={styles.editorContainer}>
+
               <RichTextPlugin
                 contentEditable={<ContentEditable className={styles.contentEditable} />}
                 placeholder={<div className={styles.placeholder}>今日もお疲れ様です。執筆されますか？</div>}
