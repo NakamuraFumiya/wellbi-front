@@ -6,6 +6,11 @@ import {ContentEditable} from "@lexical/react/LexicalContentEditable";
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 import {useSession} from "next-auth/react";
 import styles from "./New.module.scss";
+import styled from "styled-components";
+
+const Spacer = styled.div`
+  padding-top: 4rem;
+`;
 
 const initialConfig: ComponentProps<typeof LexicalComposer>["initialConfig"] = {
   namespace: "MyEditor",
@@ -32,7 +37,8 @@ export const New = () => {
         </>
       ) : (
         <>
-          ログインし直してください
+          <Spacer />
+          <p>投稿ページを利用するには、ログインし直してください。</p>
         </>
       )}
     </>
