@@ -50,6 +50,7 @@ const StyledContentFlexBox = styled.div`
   display: flex;
   flex-display: row;
   column-gap: 5rem;
+  padding-top: 5rem;
   //align-items: center;
   justify-content: center;
 `;
