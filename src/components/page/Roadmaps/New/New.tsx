@@ -36,6 +36,7 @@ export const New = () => {
       {session ? (
         <>
           <Spacer />
+          {/*<input type={"text"} minLength={1} maxLength={100} placeholder={"記事タイトル"} className={styles.title} />*/}
           <LexicalComposer initialConfig={initialConfig}>
             <ToolbarPlugin />
             <div className={styles.editorContainer}>
