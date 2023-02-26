@@ -2,6 +2,9 @@ import styled from "styled-components";
 import Router from "next/router";
 import {Session} from "next-auth";
 import { useSession, signIn, signOut } from "next-auth/react";
+import {useLexicalComposerContext} from "@lexical/react/LexicalComposerContext";
+import {LexicalEditor} from "lexical";
+import {useState} from "react";
 
 
 const StyledHeaderParent = styled.div`
@@ -56,7 +59,10 @@ const Spacer = styled.div`
   padding-top: 4rem;
 `;
 
-export const NewRoadmapHeader = () => {
+type Props = {
+  setHttpRequestHook: (isRequest: boolean) => void,
+}
+export const NewRoadmapHeader = ({setHttpRequestHook}: Props) => {
   const { data: session } = useSession();
   const handler = (path: string) => {
     Router.push(path)
@@ -68,13 +74,12 @@ export const NewRoadmapHeader = () => {
         <StyledHeaderParent>
           <StyledHeaderButton onClick={() => handler("/")}>
             <img src={"/images/common/project/wellbi-logo-icon.png"} width="97.3" height="23" alt="header-icon"/>
-
           </StyledHeaderButton>
           <div>
             <StyledHeaderChild>
               {session ? (
                 <>
-                  <StyledNewPostButton onClick={() => console.log("投稿する")}>投稿する</StyledNewPostButton>
+                  <StyledNewPostButton onClick={() => setHttpRequestHook(true)}>投稿する</StyledNewPostButton>
                 </>
               ) : (
                 <>

@@ -1,4 +1,4 @@
-import { ComponentProps } from "react";
+import {ComponentProps, useEffect, useState} from "react";
 import {useSession} from "next-auth/react";
 import styles from "./New.module.scss";
 import styled from "styled-components";
@@ -12,6 +12,9 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { nodes } from "./nodes";
 import {ToolbarPlugin} from "@/components/page/Roadmaps/Plugins/Toolbar/ToolbarPlugin";
 import {NewRoadmapHeader} from "@/components/ui/Layout/Header/NewRoadmapHeader";
+import {useLexicalComposerContext} from "@lexical/react/LexicalComposerContext";
+import {LexicalEditor} from "lexical";
+import {HttpClientPlugin} from "@/components/page/Roadmaps/Plugins/Http/HttpClientPlugin";
 
 const Spacer = styled.div`
   padding-top: 4rem;
@@ -25,17 +28,17 @@ const initialConfig: ComponentProps<typeof LexicalComposer>["initialConfig"] = {
 
 export const New = () => {
   const { data: session } = useSession();
+  const [httpRequestHook, setHttpRequestHook] = useState<boolean>(false);
 
   return (
     <>
-      <NewRoadmapHeader />
+      <NewRoadmapHeader setHttpRequestHook={setHttpRequestHook}/>
       {session ? (
         <>
           <Spacer />
           <LexicalComposer initialConfig={initialConfig}>
             <ToolbarPlugin />
             <div className={styles.editorContainer}>
-
               <RichTextPlugin
                 contentEditable={<ContentEditable className={styles.contentEditable} />}
                 placeholder={<div className={styles.placeholder}>今日もお疲れ様です。執筆されますか？</div>}
@@ -44,6 +47,7 @@ export const New = () => {
             </div>
             <AutoFocusPlugin />
             <HistoryPlugin />
+            <HttpClientPlugin httpRequestHook={httpRequestHook} />
           </LexicalComposer>
         </>
       ) : (
