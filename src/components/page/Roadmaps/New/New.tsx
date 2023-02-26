@@ -1,12 +1,15 @@
 import { ComponentProps } from "react";
+import {useSession} from "next-auth/react";
+import styles from "./New.module.scss";
+import styled from "styled-components";
 import {Header} from "@/components/ui/Layout/Header/Header";
 import {LexicalComposer} from "@lexical/react/LexicalComposer";
 import {RichTextPlugin} from "@lexical/react/LexicalRichTextPlugin";
 import {ContentEditable} from "@lexical/react/LexicalContentEditable";
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
-import {useSession} from "next-auth/react";
-import styles from "./New.module.scss";
-import styled from "styled-components";
+import {AutoFocusPlugin} from "@/components/page/Roadmaps/Plugins/AutoFocusPlugin";
+import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
+
 
 const Spacer = styled.div`
   padding-top: 4rem;
@@ -33,6 +36,8 @@ export const New = () => {
                 ErrorBoundary={LexicalErrorBoundary}
               />
             </div>
+            <AutoFocusPlugin />
+            <HistoryPlugin />
           </LexicalComposer>
         </>
       ) : (
