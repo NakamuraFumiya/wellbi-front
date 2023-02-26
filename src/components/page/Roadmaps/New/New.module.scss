@@ -1,7 +1,8 @@
 .editorContainer {
   position: relative;
-  padding: 1.5rem;
+  padding: 1.5rem 30rem;
   min-height: 15rem;
+  color: #000000D1;
 }
 
 .contentEditable {
@@ -10,6 +11,7 @@
 
 .placeholder {
   position: absolute;
+  padding-left: 30rem;
   color: #888888;
   top: 1.5rem;
   left: 1.5rem;
