@@ -13,7 +13,7 @@ const StyledHeaderParent = styled.div`
 
 const StyledHeaderChild = styled.div`
   display: flex;
-  margin-right: 10rem;
+  margin-right: 8rem;
   column-gap: 1rem;
   align-items: center;
 `;
@@ -38,6 +38,15 @@ const StyledLogOutButton = styled.button`
 `
 
 const StyledHeaderButton = styled.button`
+  color: #000000D1;
+  font-size: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+`;
+
+const StyledHeaderLogoButton = styled.button`
+  padding-left: 8rem;
   color: #000000D1;
   font-size: 1rem;
   background: none;
@@ -71,10 +80,9 @@ export const Header = ({aboutPage, roadMapNewPage}: Props) => {
     <div>
       <StyledHeader>
         <StyledHeaderParent>
-          <StyledHeaderButton onClick={() => handler("/")}>
+          <StyledHeaderLogoButton onClick={() => handler("/")}>
             <img src={"/images/common/project/wellbi-logo-icon.png"} width="97.3" height="23" alt="header-icon"/>
-
-          </StyledHeaderButton>
+          </StyledHeaderLogoButton>
           <div>
             <StyledHeaderChild>
               {
