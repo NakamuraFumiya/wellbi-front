@@ -5,12 +5,12 @@ import {RichTextPlugin} from "@lexical/react/LexicalRichTextPlugin";
 import {ContentEditable} from "@lexical/react/LexicalContentEditable";
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 import {useSession} from "next-auth/react";
+import styles from "./New.module.scss";
 
 const initialConfig: ComponentProps<typeof LexicalComposer>["initialConfig"] = {
   namespace: "MyEditor",
   onError: (error) => console.error(error),
 };
-
 
 export const New = () => {
   const { data: session } = useSession();
@@ -21,11 +21,13 @@ export const New = () => {
       {session ? (
         <>
           <LexicalComposer initialConfig={initialConfig}>
-            <RichTextPlugin
-              contentEditable={<ContentEditable />}
-              placeholder={<div>今日もお疲れ様です。執筆されますか？</div>}
-              ErrorBoundary={LexicalErrorBoundary}
-            />
+            <div className={styles.editorContainer}>
+              <RichTextPlugin
+                contentEditable={<ContentEditable className={styles.contentEditable} />}
+                placeholder={<div className={styles.placeholder}>今日もお疲れ様です。執筆されますか？</div>}
+                ErrorBoundary={LexicalErrorBoundary}
+              />
+            </div>
           </LexicalComposer>
         </>
       ) : (
