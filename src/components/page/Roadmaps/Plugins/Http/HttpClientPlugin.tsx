@@ -12,7 +12,7 @@ export const HttpClientPlugin = ({httpRequestHook}: Props) => {
       const editorState = editor.getEditorState();
       const json = editorState.toJSON();
       console.log("投稿する");
-      console.log(json);
+      console.log(json.root.children);
     }
   }, [httpRequestHook])
 
