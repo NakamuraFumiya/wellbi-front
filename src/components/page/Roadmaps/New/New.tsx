@@ -7,9 +7,10 @@ import {LexicalComposer} from "@lexical/react/LexicalComposer";
 import {RichTextPlugin} from "@lexical/react/LexicalRichTextPlugin";
 import {ContentEditable} from "@lexical/react/LexicalContentEditable";
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
-import {AutoFocusPlugin} from "@/components/page/Roadmaps/Plugins/AutoFocusPlugin";
+import {AutoFocusPlugin} from "@/components/page/Roadmaps/Plugins/AutoFocus/AutoFocusPlugin";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
-
+import { nodes } from "./nodes";
+import {ToolbarPlugin} from "@/components/page/Roadmaps/Plugins/Toolbar/ToolbarPlugin";
 
 const Spacer = styled.div`
   padding-top: 4rem;
@@ -18,6 +19,7 @@ const Spacer = styled.div`
 const initialConfig: ComponentProps<typeof LexicalComposer>["initialConfig"] = {
   namespace: "MyEditor",
   onError: (error) => console.error(error),
+  nodes: nodes,
 };
 
 export const New = () => {
@@ -28,7 +30,9 @@ export const New = () => {
       <Header />
       {session ? (
         <>
+          <Spacer />
           <LexicalComposer initialConfig={initialConfig}>
+            <ToolbarPlugin />
             <div className={styles.editorContainer}>
               <RichTextPlugin
                 contentEditable={<ContentEditable className={styles.contentEditable} />}
