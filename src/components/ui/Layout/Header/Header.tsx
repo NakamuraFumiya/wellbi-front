@@ -92,13 +92,13 @@ export const Header = ({aboutPage, roadMapNewPage}: Props) => {
               }
               {session ? (
                 <>
-                  <StyledHeaderButton>Roadmapを見る</StyledHeaderButton>
+                  <StyledHeaderButton onClick={() => handler("/roadmaps/list")}>Roadmapを見る</StyledHeaderButton>
                   {!roadMapNewPage && <StyledHeaderButton onClick={() => handler("/roadmaps/new")}>新規Roadmapを投稿する</StyledHeaderButton>}
                   <StyledLogOutButton onClick={() => signOut()}>Log Out</StyledLogOutButton>
                 </>
               ) : (
                 <>
-                  <StyledHeaderButton>Roadmapを見る</StyledHeaderButton>
+                  <StyledHeaderButton onClick={() => handler("/roadmaps/list")}>Roadmapを見る</StyledHeaderButton>
                   <StyledLoginButton onClick={() => signIn()}>Log In</StyledLoginButton>
                 </>
               )}

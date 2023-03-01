@@ -83,7 +83,7 @@ export const NewRoadmapHeader = ({setHttpRequestHook}: Props) => {
                 </>
               ) : (
                 <>
-                  <StyledHeaderButton>Roadmapを見る</StyledHeaderButton>
+                  <StyledHeaderButton onClick={() => handler("/roadmaps/list")}>Roadmapを見る</StyledHeaderButton>
                   <StyledLoginButton onClick={() => signIn()}>Log In</StyledLoginButton>
                 </>
               )}
