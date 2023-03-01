@@ -1,4 +1,11 @@
+import {useEffect} from "react";
 
 export const List = () => {
-  return <h1>Listページです</h1>
+  useEffect(() => {
+
+  }, [])
+
+  return (
+    <h1>Listページです</h1>
+  );
 }

@@ -4,6 +4,10 @@ import axios from "axios";
 import FormData from "form-data";
 import {$generateHtmlFromNodes} from '@lexical/html';
 
+const { NEXT_PUBLIC_API_HOST_URL } = process.env
+
+if (!NEXT_PUBLIC_API_HOST_URL) throw new Error('You must provide API_HOST_URL env var.');
+
 type Props = {
   httpRequestHook: boolean,
 }
@@ -16,7 +20,7 @@ export const HttpClientPlugin = ({httpRequestHook}: Props) => {
       const json = editorState.toJSON();
       const data = new FormData();
       data.append("message", JSON.stringify(json))
-      axios.post("http://localhost:1323/api/posts", data).then((response) => console.log(response));
+      axios.post(`${NEXT_PUBLIC_API_HOST_URL}/api/posts`, data).then((response) => console.log(response));
     }
   }, [httpRequestHook])
 
