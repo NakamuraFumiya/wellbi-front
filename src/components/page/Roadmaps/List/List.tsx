@@ -1,16 +1,14 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {LoadmapRow} from "@/components/page/Roadmaps/List/LoadmapRow";
+import { Roadmap } from "@/types/roadmap";
 
 const { NEXT_PUBLIC_API_HOST_URL } = process.env
 
 export const List = () => {
-  const [roadmaps, setLoadmaps] = useState([]);
+  const [roadmaps, setLoadmaps] = useState<Roadmap[]>([]);
   useEffect(() => {
     axios.get(`${NEXT_PUBLIC_API_HOST_URL}/api/posts`).then((response) => {
-      // console.log(response.data)
-      // console.log(response.data[0].Message);
-      console.log(response.data)
       setLoadmaps(response.data)
     }).catch((error) => {
       console.log(error)
@@ -21,8 +19,7 @@ export const List = () => {
     <>
       {
         roadmaps.map((roadmap) => {
-          console.log(roadmap)
-          // <LoadmapRow roadmap={roadmap}/>
+          return <LoadmapRow roadmap={roadmap} key={roadmap.ID}/>
         })
       }
       <h1>Listページです</h1>

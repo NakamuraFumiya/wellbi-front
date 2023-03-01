@@ -5,5 +5,6 @@ type Props = {
   roadmap: Roadmap
 }
 export const LoadmapRow = ({roadmap}: Props) => {
+  console.log(roadmap.Message)
   return <p>{roadmap.Message}</p>
 }
