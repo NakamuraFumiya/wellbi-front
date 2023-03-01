@@ -19,7 +19,7 @@ export const HttpClientPlugin = ({httpRequestHook}: Props) => {
       const editorState = editor.getEditorState();
       const json = editorState.toJSON();
       const data = new FormData();
-      data.append("message", JSON.stringify(json))
+      data.append("message", JSON.stringify(json.root.children))
       axios.post(`${NEXT_PUBLIC_API_HOST_URL}/api/posts`, data).then((response) => console.log(response));
     }
   }, [httpRequestHook])
