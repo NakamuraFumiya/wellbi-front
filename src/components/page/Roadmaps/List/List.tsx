@@ -9,7 +9,11 @@ export const List = () => {
   const [roadmaps, setLoadmaps] = useState<Roadmap[]>([]);
   useEffect(() => {
     axios.get(`${NEXT_PUBLIC_API_HOST_URL}/api/posts`).then((response) => {
-      setLoadmaps(response.data)
+      const roadmapList: Roadmap[] = [];
+      response.data.map((res: Roadmap) => {
+        roadmapList.push({ ID: res.ID, Message: res.Message })
+      })
+      setLoadmaps(roadmapList)
     }).catch((error) => {
       console.log(error)
     })
