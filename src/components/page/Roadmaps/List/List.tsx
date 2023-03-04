@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {LoadmapRow} from "@/components/page/Roadmaps/List/LoadmapRow";
 import {Roadmap, ElementNode, RoadmapResponse} from "@/types/roadmap";
+import {Header} from "@/components/ui/Layout/Header/Header";
 
 const { NEXT_PUBLIC_API_HOST_URL } = process.env
 
@@ -27,12 +28,13 @@ export const List = () => {
 
   return (
     <>
+      <Header listPage={true} />
+      <h1>Listページです</h1>
       {
         roadmaps.map((roadmap) => {
           return <LoadmapRow roadmap={roadmap} key={roadmap.ID}/>
         })
       }
-      <h1>Listページです</h1>
     </>
   );
 }
