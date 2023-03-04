@@ -1,19 +1,31 @@
+export type RoadmapResponse = {
+  ID: number;
+  Message: string;
+}
+
 export type Roadmap = {
   ID: number;
   Message: ElementNode[];
 }
 
-interface ElementNode {
+export type ElementNode = {
   children: TextNode[];
-  direction?: string;
-  format?: string;
-  indent?: number;
-  type?: string;
-  version?: number;
+  direction: string;
+  format: string;
+  indent: number;
+  type: string;
+  version: number;
+  tag?: string;
 }
 
-interface TextNode {
-  [key: string]: [value: string | number];
+export type TextNode = {
+  detail?: number;
+  format?: number;
+  mode?: string;
+  style?: string;
+  text?: string;
+  type?: string;
+  version?: number;
 }
 
 //
