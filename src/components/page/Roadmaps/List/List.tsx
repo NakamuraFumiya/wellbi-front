@@ -4,6 +4,7 @@ import {LoadmapRow} from "@/components/page/Roadmaps/List/LoadmapRow";
 import {Roadmap, ElementNode, RoadmapResponse} from "@/types/roadmap";
 import {Header} from "@/components/ui/Layout/Header/Header";
 import styled from "styled-components";
+import Router from "next/router";
 
 const { NEXT_PUBLIC_API_HOST_URL } = process.env
 
@@ -12,22 +13,29 @@ const Spacer = styled.div`
 `;
 
 const StyledListContainer = styled.div`
-  padding: 0 15rem;
+  padding: 0 10rem;
 `;
 
 const StyledItemContainer = styled.a`
   justify-content: center;
-  width: 100%;
+  width: 12rem;
   margin-bottom: 1.5rem;
+  cursor: pointer;
 `;
 
 const StyledContentFlexBox = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  column-gap: 1rem;
   padding-top: 5rem;
 `;
 
 export const List = () => {
   const [roadmaps, setLoadmaps] = useState<Roadmap[]>([]);
+  const handler = (path: string) => {
+    Router.push(path)
+  };
+
   useEffect(() => {
     axios.get(`${NEXT_PUBLIC_API_HOST_URL}/api/posts`).then((response) => {
       const roadmapList: Roadmap[] = [];
@@ -35,7 +43,7 @@ export const List = () => {
         // MessageとElementNodeのマッピング処理
         const elementNodes: ElementNode[] = []
         JSON.parse(roadmap.Message).map((elementNode: ElementNode) => {
-          console.log(elementNode)
+          // console.log(elementNode)
           elementNodes.push(elementNode)
         })
         roadmapList.push({ ID: roadmap.ID, Message: elementNodes })
@@ -56,11 +64,10 @@ export const List = () => {
           {
             roadmaps.map((roadmap) => {
               return (
-                <>
-                  <StyledItemContainer>
-                    <LoadmapRow roadmap={roadmap} key={roadmap.ID}/>
+                  <StyledItemContainer onClick={() => handler("/")} key={roadmap.ID}>
+                    <img src={"/images/pages/Roadmaps/List/default-item.png"} width={150} height={100}/>
+                    <LoadmapRow roadmap={roadmap} />
                   </StyledItemContainer>
-                </>
               )
             })
           }
