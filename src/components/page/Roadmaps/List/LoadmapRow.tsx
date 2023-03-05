@@ -6,8 +6,8 @@ type Props = {
 export const LoadmapRow = ({roadmap}: Props) => {
   return (
     <div>
-      <p>{roadmap.ID}</p>
-      <p>{roadmap.Message[0].children[0].text}</p>
+      <p>{roadmap.Title ? roadmap.Title : "記事タイトルなし"}</p>
+      <p>{roadmap.Message[0].children[0] ? roadmap.Message[0].children[0].text : "文章なし"}</p>
     </div>
   )
 }

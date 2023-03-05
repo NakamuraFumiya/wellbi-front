@@ -46,7 +46,7 @@ export const List = () => {
           // console.log(elementNode)
           elementNodes.push(elementNode)
         })
-        roadmapList.push({ ID: roadmap.ID, Message: elementNodes })
+        roadmapList.push({ ID: roadmap.ID, Title: roadmap.Title, Message: elementNodes })
       })
       setLoadmaps(roadmapList)
     }).catch((error) => {

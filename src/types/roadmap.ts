@@ -1,11 +1,13 @@
 // TODO: Responseがここにあるのは違和感だが一旦はよしとする
 export type RoadmapResponse = {
   ID: number;
+  Title: string;
   Message: string;
 }
 
 export type Roadmap = {
   ID: number;
+  Title: string;
   Message: ElementNode[];
 }
 
