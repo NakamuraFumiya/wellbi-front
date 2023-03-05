@@ -1,4 +1,3 @@
-
 import { Roadmap } from "@/types/roadmap";
 
 type Props = {
@@ -6,9 +5,9 @@ type Props = {
 }
 export const LoadmapRow = ({roadmap}: Props) => {
   return (
-    <>
+    <div>
       <p>{roadmap.ID}</p>
       <p>{roadmap.Message[0].children[0].text}</p>
-    </>
+    </div>
   )
 }

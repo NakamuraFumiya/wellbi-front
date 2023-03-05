@@ -1,7 +1,6 @@
 
 import styled from "styled-components";
-import { useSession, signIn, signOut } from "next-auth/react";
-import Router from "next/router";
+import { useSession, signIn } from "next-auth/react";
 import {Header} from "@/components/ui/Layout/Header/Header";
 
 const Spacer = styled.div`
@@ -51,7 +50,6 @@ const StyledContentFlexBox = styled.div`
   flex-display: row;
   column-gap: 5rem;
   padding-top: 5rem;
-  //align-items: center;
   justify-content: center;
 `;
 

@@ -1,3 +1,4 @@
+// TODO: Responseがここにあるのは違和感だが一旦はよしとする
 export type RoadmapResponse = {
   ID: number;
   Message: string;
