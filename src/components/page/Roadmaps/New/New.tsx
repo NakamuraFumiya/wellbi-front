@@ -1,4 +1,4 @@
-import {ComponentProps, useEffect, useState} from "react";
+import {ComponentProps, SyntheticEvent, useEffect, useState} from "react";
 import {useSession} from "next-auth/react";
 import styles from "./New.module.scss";
 import styled from "styled-components";
@@ -29,6 +29,10 @@ const initialConfig: ComponentProps<typeof LexicalComposer>["initialConfig"] = {
 export const New = () => {
   const { data: session } = useSession();
   const [httpRequestHook, setHttpRequestHook] = useState<boolean>(false);
+  const [title, setTitle] = useState<string>("");
+  const titleHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(() => e.target.value)
+  };
 
   return (
     <>
@@ -36,7 +40,7 @@ export const New = () => {
       {session ? (
         <>
           <Spacer />
-          {/*<input type={"text"} minLength={1} maxLength={100} placeholder={"記事タイトル"} className={styles.title} />*/}
+          <input value={title} onChange={titleHandleChange} type={"text"} minLength={1} maxLength={100} placeholder={"記事タイトル"} className={styles.title} />
           <LexicalComposer initialConfig={initialConfig}>
             <ToolbarPlugin />
             <div className={styles.editorContainer}>
@@ -48,7 +52,7 @@ export const New = () => {
             </div>
             <AutoFocusPlugin />
             <HistoryPlugin />
-            <HttpClientPlugin httpRequestHook={httpRequestHook} />
+            <HttpClientPlugin httpRequestHook={httpRequestHook} title={title} />
           </LexicalComposer>
         </>
       ) : (
