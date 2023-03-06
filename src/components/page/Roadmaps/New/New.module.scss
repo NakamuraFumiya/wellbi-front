@@ -1,6 +1,13 @@
+
+.title {
+  font-size: 1.5rem;
+  padding-top: 5rem;
+  padding-left: 21rem;
+}
+
 .editorContainer {
   position: relative;
-  padding: 3rem 30rem;
+  padding: 3rem 21rem;
   min-height: 15rem;
   color: #000000D1;
 }
@@ -11,7 +18,7 @@
 
 .placeholder {
   position: absolute;
-  padding-left: 30rem;
+  padding-left: 20rem;
   color: #888888;
   top: 3rem;
   left: 1.5rem;
