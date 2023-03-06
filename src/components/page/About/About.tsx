@@ -7,6 +7,10 @@ const Spacer = styled.div`
   padding-top: 4rem;
 `;
 
+const DescriptionSpacer = styled.div`
+  padding-top: 1rem;
+`;
+
 const FlexBoxRow = styled.div`
   display: flex;
   flex-direction: row;
@@ -49,7 +53,7 @@ const StyledContentFlexBox = styled.div`
   display: flex;
   flex-display: row;
   column-gap: 5rem;
-  padding-top: 5rem;
+  padding-top: 2rem;
   justify-content: center;
 `;
 
@@ -71,7 +75,7 @@ const StyledServiceVisionTitle = styled.h2`
   width: 20rem;
 `;
 const StyledServiceVisionDescription = styled.p`
-  font-size: 1.1rem;
+  font-size: 1rem;
   width: 40rem;
   color: #6E7B85;
 `;
@@ -89,6 +93,7 @@ const StyledJoinFlexBox = styled.div`
 
 `;
 const StyledJoinTitle = styled.h2`
+  padding-top: 2rem;
   font-size: 2.5rem;
 `;
 const StyledJoinDescription = styled.h2`
@@ -128,14 +133,14 @@ export const About = () => {
         <StyledHowItWorks>How it works</StyledHowItWorks>
         <StyledContentFlexBox>
           <StyledContentChild>
-            <h3>再現性のある記事を書こう</h3>
+            <h3>ロードマップを公開しよう</h3>
             <img src={"/images/pages/About/article.png"} width={280} height={186} />
-            <StyledDescription>キャリアチェンジのための、あなたの実体験やアイディアをシェアしましょう。思わぬ反響があるかもしれません。</StyledDescription>
+            <StyledDescription>キャリアチェンジのための、あなたの実体験やアイディアをシェアしましょう。きっとだれかのロールモデルになるはず。</StyledDescription>
           </StyledContentChild>
           <StyledContentChild>
-            <h3>ロードマップを見つけよう</h3>
+            <h3>自分なりのキャリアモデルを見つけよう</h3>
             <img src={"/images/pages/About/roadmap.png"} width={280} height={195}/>
-            <StyledDescription>キャリアチェンジのモデルとする記事を見つけましょう。ゴールが明確になれば前に進むことが楽しくなります。</StyledDescription>
+            <StyledDescription>キャリアのモデルとする記事を見つけましょう。ゴールが明確になれば前に進むことが楽しくなります。</StyledDescription>
           </StyledContentChild>
           <StyledContentChild>
             <h3>ドーナツを贈って著者を応援しよう</h3>
@@ -150,10 +155,17 @@ export const About = () => {
         <StyledServiceVisionFlexBox>
           <StyledServiceVisionTitle>全ての人が自分なりのキャリアをデザインできるように</StyledServiceVisionTitle>
           <div>
-            <StyledServiceVisionDescription>興味を持った仕事、「やってみたい！」と思えた仕事。</StyledServiceVisionDescription>
-            <StyledServiceVisionDescription>キャリアチェンジを考えたものの、最初の1歩が踏み出せなかったり、 道半ばで諦めてしまうのはすごくもったいないことです。</StyledServiceVisionDescription>
-            <StyledServiceVisionDescription>新しいキャリアをスタートさせるためには、再現性のあるプロセスを最短距離で辿るのが一番だと考えています。</StyledServiceVisionDescription>
-            <StyledServiceVisionDescription>Wellbiでは、実際にキャリアチェンジした方の実体験やアイディアをナレッジとして蓄積し、夢を追いかける方を支援します。</StyledServiceVisionDescription>
+            <StyledServiceVisionDescription>人生において仕事はたくさんの時間を占めます。</StyledServiceVisionDescription>
+            <DescriptionSpacer />
+            <StyledServiceVisionDescription>お金のために働く。</StyledServiceVisionDescription>
+            <StyledServiceVisionDescription>でもそれだけだとなにか物足りない。</StyledServiceVisionDescription>
+            <DescriptionSpacer />
+            <StyledServiceVisionDescription>仕事に対して情熱を持つことができたり</StyledServiceVisionDescription>
+            <StyledServiceVisionDescription>もっと充実した時間を送ることができるなら. . .</StyledServiceVisionDescription>
+            <StyledServiceVisionDescription>人生の幸福度はきっと高まるはず。</StyledServiceVisionDescription>
+            <DescriptionSpacer />
+            <StyledServiceVisionDescription>Wellbiでは、実際にキャリアチェンジした方の実体験やアイディアを待っています。</StyledServiceVisionDescription>
+            <DescriptionSpacer />
             <StyledServiceVisionDescription>さぁ、自分のために、誰かのために、あなたの知見をシェアしましょう。</StyledServiceVisionDescription>
           </div>
         </StyledServiceVisionFlexBox>
