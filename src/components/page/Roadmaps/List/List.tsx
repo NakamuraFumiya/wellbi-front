@@ -63,7 +63,7 @@ export const List = () => {
           {
             roadmaps.map((roadmap) => {
               return (
-                  <StyledItemContainer onClick={() => handler("/roadmaps/detail")} key={roadmap.ID}>
+                  <StyledItemContainer onClick={() => handler(`/roadmaps/${roadmap.ID}`)} key={roadmap.ID}>
                     <img src={"/images/pages/Roadmaps/List/default-item.png"} width={150} height={100}/>
                     <LoadmapRow roadmap={roadmap} />
                   </StyledItemContainer>
