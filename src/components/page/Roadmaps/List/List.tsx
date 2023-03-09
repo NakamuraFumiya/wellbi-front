@@ -6,8 +6,6 @@ import {Header} from "@/components/ui/Layout/Header/Header";
 import styled from "styled-components";
 import Router from "next/router";
 
-const { NEXT_PUBLIC_API_HOST_URL } = process.env
-
 const Spacer = styled.div`
   padding-top: 4rem;
 `;
@@ -35,6 +33,7 @@ export const List = () => {
   const handler = (path: string) => {
     Router.push(path)
   };
+  const { NEXT_PUBLIC_API_HOST_URL } = process.env;
 
   useEffect(() => {
     axios.get(`${NEXT_PUBLIC_API_HOST_URL}/api/posts`).then((response) => {
