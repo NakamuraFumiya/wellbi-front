@@ -43,7 +43,6 @@ export const List = () => {
         // MessageとElementNodeのマッピング処理
         const elementNodes: ElementNode[] = []
         JSON.parse(roadmap.Message).map((elementNode: ElementNode) => {
-          // console.log(elementNode)
           elementNodes.push(elementNode)
         })
         roadmapList.push({ ID: roadmap.ID, Title: roadmap.Title, Message: elementNodes })
@@ -64,7 +63,7 @@ export const List = () => {
           {
             roadmaps.map((roadmap) => {
               return (
-                  <StyledItemContainer onClick={() => handler("/")} key={roadmap.ID}>
+                  <StyledItemContainer onClick={() => handler("/roadmaps/detail")} key={roadmap.ID}>
                     <img src={"/images/pages/Roadmaps/List/default-item.png"} width={150} height={100}/>
                     <LoadmapRow roadmap={roadmap} />
                   </StyledItemContainer>
