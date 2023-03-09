@@ -21,7 +21,12 @@ const StyledTitle = styled.div`
   padding-top: 2rem;
 `;
 
- const StyledContent = styled.div`
+ const StyledHeading = styled.div`
+   padding-top: 1rem;
+ `;
+
+const StyledParagraph = styled.div`
+   font-size: 1.2rem; 
    padding-top: 1rem;
  `;
 
@@ -61,21 +66,21 @@ export const Detail = () => {
                 case "heading":
                   if (elementNode.tag == "h1" || "h2") {
                     return (
-                      <StyledContent>
+                      <StyledHeading>
                         <h2>{elementNode.children[0].text}</h2>
-                      </StyledContent>
+                      </StyledHeading>
                     );
                   } else if (elementNode.tag == "h3") {
                     return (
-                      <StyledContent>
+                      <StyledHeading>
                         <h3>{elementNode.children[0].text}</h3>
-                      </StyledContent>
+                      </StyledHeading>
                     );                  };
                 case "paragraph":
                   return (
-                    <StyledContent>
-                      <p>{elementNode.children[0].text}</p>
-                    </StyledContent>
+                    <StyledParagraph>
+                      <p>{elementNode.children[0]?.text}</p>
+                    </StyledParagraph>
                   );              }
             })}
           </>
