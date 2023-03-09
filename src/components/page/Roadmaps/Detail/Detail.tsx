@@ -10,7 +10,6 @@ export const Detail = () => {
   const [roadmap, setRoadmap] = useState<Roadmap>();
   const { NEXT_PUBLIC_API_HOST_URL } = process.env;
 
-
   useEffect(() => {
     axios.get(`${NEXT_PUBLIC_API_HOST_URL}/api/posts/${roadmapID}`)
       .then((response) => {
