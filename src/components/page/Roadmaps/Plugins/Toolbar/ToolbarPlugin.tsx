@@ -38,16 +38,16 @@ export const ToolbarPlugin = () => {
 
   return (
     <div className={styles.toolbar}>
-      <button
-        type="button"
-        role="checkbox"
-        title={SupportedBlockType["h1"]}
-        aria-label={SupportedBlockType["h1"]}
-        aria-checked={blockType === "h1"}
-        onClick={() => formatHeading("h1")}
-      >
-        <TbH1 className={styles.toolIcon}/>
-      </button>
+      {/*<button*/}
+      {/*  type="button"*/}
+      {/*  role="checkbox"*/}
+      {/*  title={SupportedBlockType["h1"]}*/}
+      {/*  aria-label={SupportedBlockType["h1"]}*/}
+      {/*  aria-checked={blockType === "h1"}*/}
+      {/*  onClick={() => formatHeading("h1")}*/}
+      {/*>*/}
+      {/*  <TbH1 className={styles.toolIcon}/>*/}
+      {/*</button>*/}
       <button
         type="button"
         role="checkbox"
