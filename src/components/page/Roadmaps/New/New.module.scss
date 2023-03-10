@@ -1,14 +1,21 @@
 
+.uploadImage {
+  padding-left: 25rem;
+}
+
 .title {
   font-size: 2rem;
-  padding-top: 5rem;
-  padding-left: 21rem;
+  padding-top: 4rem;
+  padding-left: 25rem;
   width: 100%;
+    font-weight: bold;
+
 }
 
 .editorContainer {
   position: relative;
-  padding: 3rem 21rem;
+  font-size: 1.1rem;
+  padding: 4rem 25rem;
   min-height: 15rem;
   color: #000000D1;
 }
@@ -19,7 +26,8 @@
 
 .placeholder {
   position: absolute;
-  padding-left: 20rem;
+  padding-top: 1rem;
+  padding-left: 23.6rem;
   color: #888888;
   top: 3rem;
   left: 1.5rem;

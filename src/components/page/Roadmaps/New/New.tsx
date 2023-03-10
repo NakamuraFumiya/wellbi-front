@@ -14,7 +14,7 @@ import {NewRoadmapHeader} from "@/components/ui/Layout/Header/NewRoadmapHeader";
 import {HttpClientPlugin} from "@/components/page/Roadmaps/Plugins/Http/HttpClientPlugin";
 
 const Spacer = styled.div`
-  padding-top: 4rem;
+  padding-top: 2.5rem;
 `;
 
 const initialConfig: ComponentProps<typeof LexicalComposer>["initialConfig"] = {
@@ -42,7 +42,7 @@ export const New = () => {
       {session ? (
         <>
           <Spacer />
-          <button onClick={(e) => {
+          <button className={styles.uploadImage} onClick={(e) => {
             document.getElementById("fileUpload")?.click();
           }}>
             <img src={"/images/common/icon/upload-image.png"} width={50} height={50}/>
