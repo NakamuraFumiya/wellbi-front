@@ -1,8 +1,7 @@
-import {ComponentProps, SyntheticEvent, useEffect, useState} from "react";
+import {ComponentProps, useState} from "react";
 import {useSession} from "next-auth/react";
 import styles from "./New.module.scss";
 import styled from "styled-components";
-import {Header} from "@/components/ui/Layout/Header/Header";
 import {LexicalComposer} from "@lexical/react/LexicalComposer";
 import {RichTextPlugin} from "@lexical/react/LexicalRichTextPlugin";
 import {ContentEditable} from "@lexical/react/LexicalContentEditable";
@@ -12,8 +11,6 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { nodes } from "./nodes";
 import {ToolbarPlugin} from "@/components/page/Roadmaps/Plugins/Toolbar/ToolbarPlugin";
 import {NewRoadmapHeader} from "@/components/ui/Layout/Header/NewRoadmapHeader";
-import {useLexicalComposerContext} from "@lexical/react/LexicalComposerContext";
-import {LexicalEditor} from "lexical";
 import {HttpClientPlugin} from "@/components/page/Roadmaps/Plugins/Http/HttpClientPlugin";
 
 const Spacer = styled.div`
@@ -26,10 +23,15 @@ const initialConfig: ComponentProps<typeof LexicalComposer>["initialConfig"] = {
   nodes: nodes,
 };
 
+const StyledNone = styled.div`
+  display: none;
+`;
+
 export const New = () => {
   const { data: session } = useSession();
   const [httpRequestHook, setHttpRequestHook] = useState<boolean>(false);
   const [title, setTitle] = useState<string>("");
+
   const titleHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(() => e.target.value)
   };
@@ -40,6 +42,18 @@ export const New = () => {
       {session ? (
         <>
           <Spacer />
+          <button onClick={(e) => {
+            document.getElementById("fileUpload")?.click();
+          }}>
+            <img src={"/images/common/icon/upload-image.png"} width={50} height={50}/>
+          </button>
+          <StyledNone>
+            <input
+              id={"fileUpload"}
+              type={"file"}
+              accept={"image/*"}
+            />
+          </StyledNone>
           <input
             value={title}
             onChange={titleHandleChange}
