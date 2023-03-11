@@ -35,10 +35,10 @@ const StyledButton = styled.div`
 export const ImageCropper = () => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState<number>(1);
-  const onCropComplete = useCallback((croppedArea: Area, croppedAreaPixels: Area) => {
+  const onCropComplete = (croppedArea: Area, croppedAreaPixels: Area) => {
     console.log("おせてる？")
     console.log(croppedArea, croppedAreaPixels)
-  }, []);
+  };
 
   return (
     <>
