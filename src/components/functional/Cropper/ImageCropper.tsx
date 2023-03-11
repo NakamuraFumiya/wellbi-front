@@ -26,7 +26,7 @@ const StyledControls = styled.div`
 type Props = {
   imageURL: string;
   setCroppedRoadmapImage: (promise: string) => void;
-  setIsModalOpen: () => void;
+  setIsModalOpen: (open: boolean) => void;
 }
 export const ImageCropper = ({imageURL, setCroppedRoadmapImage, setIsModalOpen}: Props) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
