@@ -56,7 +56,7 @@ export const New = () => {
         width={500}
         height={400}
       >
-        <ImageCropper imageURL={roadmapImage} />
+        <ImageCropper imageURL={roadmapImage} setCroppedRoadmapImage={setCroppedRoadmapImage} setIsModalOpen={setIsModalOpen}/>
       </ModalContainer>
       {/*<ModalContainer isOpen={isModalOpen} children={<img src={roadmapImage}/>}></ModalContainer>*/}
       {session ? (

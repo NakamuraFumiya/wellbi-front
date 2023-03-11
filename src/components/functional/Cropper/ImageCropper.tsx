@@ -1,6 +1,8 @@
 import React, {useState, useCallback, ChangeEvent} from 'react'
 import Cropper, {Area} from 'react-easy-crop'
 import styled from "styled-components";
+import getCroppedImg from "./getCroppedImg";
+
 
 const StyledCropContainer = styled.div`
   position: absolute;
@@ -21,27 +23,28 @@ const StyledControls = styled.div`
   align-items: center;
 `;
 
-const StyledButton = styled.div`
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  width: 50%;
-  transform: translateX(-50%);
-  height: 40px;
-  display: flex;
-  align-items: center;
-`;
-
 type Props = {
   imageURL: string;
+  setCroppedRoadmapImage: (promise: string) => void;
+  setIsModalOpen: () => void;
 }
-export const ImageCropper = ({imageURL}: Props) => {
+export const ImageCropper = ({imageURL, setCroppedRoadmapImage, setIsModalOpen}: Props) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState<number>(1);
-  const onCropComplete = (croppedArea: Area, croppedAreaPixels: Area) => {
-    console.log("おせてる？")
-    console.log(croppedArea, croppedAreaPixels)
-  };
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area>();
+  const onCropComplete = useCallback((croppedArea: Area, croppedAreaPixels: Area) => {
+    setCroppedAreaPixels(croppedAreaPixels);
+  }, []);
+
+  const showCroppedImage = useCallback(async () => {
+    if (!croppedAreaPixels) return;
+    try {
+      const croppedImage = await getCroppedImg(imageURL, croppedAreaPixels);
+      setCroppedRoadmapImage(croppedImage);
+    } catch (e) {
+      console.error(e);
+    }
+  }, [croppedAreaPixels, imageURL]);
 
   return (
     <>
@@ -69,8 +72,13 @@ export const ImageCropper = ({imageURL}: Props) => {
             setZoom(Number(e.target.value));
           }}
         />
-        <button onClick={() => onCropComplete}>ボタンです</button>
+        <button onClick={() => {
+          setIsModalOpen(false);
+          showCroppedImage();
+        }
+        }>保存</button>
       </StyledControls>
     </>
   )
 };
+
