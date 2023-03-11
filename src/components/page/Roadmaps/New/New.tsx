@@ -31,9 +31,18 @@ export const New = () => {
   const { data: session } = useSession();
   const [httpRequestHook, setHttpRequestHook] = useState<boolean>(false);
   const [title, setTitle] = useState<string>("");
+  const [roadmapImage, setRoadmapImage] = useState("");
 
   const titleHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(() => e.target.value)
+  };
+
+  const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+
+    const fileObject = e.target.files[0];
+    console.log(e)
+    setRoadmapImage(window.URL.createObjectURL(fileObject));
   };
 
   return (
@@ -45,6 +54,9 @@ export const New = () => {
           <button className={styles.uploadImage} onClick={(e) => {
             document.getElementById("fileUpload")?.click();
           }}>
+            {!!roadmapImage &&
+                <img src={roadmapImage}/>
+            }
             <img src={"/images/common/icon/upload-image.png"} width={50} height={50}/>
           </button>
           <StyledNone>
@@ -52,6 +64,7 @@ export const New = () => {
               id={"fileUpload"}
               type={"file"}
               accept={"image/*"}
+              onChange={onFileInputChange}
             />
           </StyledNone>
           <input
