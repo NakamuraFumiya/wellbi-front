@@ -1,4 +1,5 @@
 import Modal from "react-modal";
+import {ReactNode} from "react";
 
 const customStyles = {
   content: {
@@ -8,14 +9,26 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
+    width: "800px",
+    maxWidth: "100%",
+    height: "600px",
+    maxHeight: "100%",
+    borderRadius: "12px",
+    boxShadow: "0px 4px 0px rgba(0, 0, 0, 0.04)",
+    padding: "40px 40px 32px",
+    overflow: "auto",
+    "&:focus-visible": {
+      outline: "none",
+    },
   },
 };
 
 type Props = {
   isOpen: boolean;
+  children: ReactNode;
 };
 export const ModalContainer = (
-  {isOpen}: Props,
+  {isOpen, children}: Props,
 ) => {
   return (
     <Modal
@@ -24,6 +37,7 @@ export const ModalContainer = (
       ariaHideApp={false}
     >
       <h2>Modalです</h2>
+      {children}
     </Modal>
   );
 };

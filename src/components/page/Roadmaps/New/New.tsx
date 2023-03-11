@@ -49,7 +49,7 @@ export const New = () => {
   return (
     <>
       <NewRoadmapHeader setHttpRequestHook={setHttpRequestHook}/>
-      <ModalContainer isOpen={isModalOpen}></ModalContainer>
+      <ModalContainer isOpen={isModalOpen} children={<p>aa</p>}></ModalContainer>
       {session ? (
         <>
           <Spacer />
