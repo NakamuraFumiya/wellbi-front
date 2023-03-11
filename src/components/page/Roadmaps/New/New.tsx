@@ -51,7 +51,7 @@ export const New = () => {
   return (
     <>
       <NewRoadmapHeader setHttpRequestHook={setHttpRequestHook}/>
-      <ModalContainer isOpen={isModalOpen} children={<ImageCropper />}></ModalContainer>
+      <ModalContainer isOpen={isModalOpen} children={<ImageCropper />} width={500} height={400}></ModalContainer>
       {/*<ModalContainer isOpen={isModalOpen} children={<img src={roadmapImage}/>}></ModalContainer>*/}
       {session ? (
         <>
