@@ -21,10 +21,22 @@ const StyledControls = styled.div`
   align-items: center;
 `;
 
+const StyledButton = styled.div`
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  width: 50%;
+  transform: translateX(-50%);
+  height: 40px;
+  display: flex;
+  align-items: center;
+`;
+
 export const ImageCropper = () => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState<number>(1);
   const onCropComplete = useCallback((croppedArea: Area, croppedAreaPixels: Area) => {
+    console.log("おせてる？")
     console.log(croppedArea, croppedAreaPixels)
   }, []);
 
@@ -54,8 +66,8 @@ export const ImageCropper = () => {
             setZoom(Number(e.target.value));
           }}
         />
+        <button onClick={() => onCropComplete}>ボタンです</button>
       </StyledControls>
-
     </>
   )
 };
