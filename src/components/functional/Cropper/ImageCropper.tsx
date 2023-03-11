@@ -32,7 +32,10 @@ const StyledButton = styled.div`
   align-items: center;
 `;
 
-export const ImageCropper = () => {
+type Props = {
+  imageURL: string;
+}
+export const ImageCropper = ({imageURL}: Props) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState<number>(1);
   const onCropComplete = (croppedArea: Area, croppedAreaPixels: Area) => {
@@ -44,7 +47,7 @@ export const ImageCropper = () => {
     <>
       <StyledCropContainer>
         <Cropper
-          image="https://img.huffingtonpost.com/asset/5ab4d4ac2000007d06eb2c56.jpeg?cache=sih0jwle4e&ops=1910_1000"
+          image={imageURL}
           crop={crop}
           zoom={zoom}
           aspect={4 / 3}
