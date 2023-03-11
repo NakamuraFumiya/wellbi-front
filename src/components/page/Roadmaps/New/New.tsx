@@ -13,6 +13,7 @@ import {ToolbarPlugin} from "@/components/page/Roadmaps/Plugins/Toolbar/ToolbarP
 import {NewRoadmapHeader} from "@/components/ui/Layout/Header/NewRoadmapHeader";
 import {HttpClientPlugin} from "@/components/page/Roadmaps/Plugins/Http/HttpClientPlugin";
 import {ModalContainer} from "@/components/ui/Modal/ModalContainer";
+import {ImageCropper} from "@/components/functional/Cropper/ImageCropper";
 
 const Spacer = styled.div`
   padding-top: 2.5rem;
@@ -50,7 +51,8 @@ export const New = () => {
   return (
     <>
       <NewRoadmapHeader setHttpRequestHook={setHttpRequestHook}/>
-      <ModalContainer isOpen={isModalOpen} children={<img src={roadmapImage}/>}></ModalContainer>
+      <ModalContainer isOpen={isModalOpen} children={<ImageCropper />}></ModalContainer>
+      {/*<ModalContainer isOpen={isModalOpen} children={<img src={roadmapImage}/>}></ModalContainer>*/}
       {session ? (
         <>
           <Spacer />
