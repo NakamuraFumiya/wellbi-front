@@ -33,6 +33,7 @@ export const New = () => {
   const [httpRequestHook, setHttpRequestHook] = useState<boolean>(false);
   const [title, setTitle] = useState<string>("");
   const [roadmapImage, setRoadmapImage] = useState("");
+  const [croppedRoadmapImage, setCroppedRoadmapImage] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const titleHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,23 +42,23 @@ export const New = () => {
 
   const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
-    setIsModalOpen(true);
     const fileObject = e.target.files[0];
     setRoadmapImage(window.URL.createObjectURL(fileObject));
+    setIsModalOpen(true);
   };
 
   return (
     <>
       <NewRoadmapHeader setHttpRequestHook={setHttpRequestHook}/>
-      <ModalContainer isOpen={isModalOpen} children={<p>aa</p>}></ModalContainer>
+      <ModalContainer isOpen={isModalOpen} children={<img src={roadmapImage}/>}></ModalContainer>
       {session ? (
         <>
           <Spacer />
           <button className={styles.uploadImage} onClick={(e) => {
             document.getElementById("fileUpload")?.click();
           }}>
-            {!!roadmapImage &&
-                <img src={roadmapImage}/>
+            {!!croppedRoadmapImage &&
+                <img src={croppedRoadmapImage}/>
             }
             <img src={"/images/common/icon/upload-image.png"} width={50} height={50}/>
           </button>

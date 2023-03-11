@@ -36,7 +36,6 @@ export const ModalContainer = (
       style={customStyles}
       ariaHideApp={false}
     >
-      <h2>Modalです</h2>
       {children}
     </Modal>
   );
