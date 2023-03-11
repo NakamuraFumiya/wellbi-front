@@ -12,6 +12,7 @@ import { nodes } from "./nodes";
 import {ToolbarPlugin} from "@/components/page/Roadmaps/Plugins/Toolbar/ToolbarPlugin";
 import {NewRoadmapHeader} from "@/components/ui/Layout/Header/NewRoadmapHeader";
 import {HttpClientPlugin} from "@/components/page/Roadmaps/Plugins/Http/HttpClientPlugin";
+import {ModalContainer} from "@/components/ui/Modal/ModalContainer";
 
 const Spacer = styled.div`
   padding-top: 2.5rem;
@@ -32,6 +33,7 @@ export const New = () => {
   const [httpRequestHook, setHttpRequestHook] = useState<boolean>(false);
   const [title, setTitle] = useState<string>("");
   const [roadmapImage, setRoadmapImage] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const titleHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(() => e.target.value)
@@ -39,15 +41,15 @@ export const New = () => {
 
   const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
-
+    setIsModalOpen(true);
     const fileObject = e.target.files[0];
-    console.log(e)
     setRoadmapImage(window.URL.createObjectURL(fileObject));
   };
 
   return (
     <>
       <NewRoadmapHeader setHttpRequestHook={setHttpRequestHook}/>
+      <ModalContainer isOpen={isModalOpen}></ModalContainer>
       {session ? (
         <>
           <Spacer />
