@@ -89,11 +89,6 @@ export const ImageCropper = ({imageURL, setCroppedRoadmapImage, setIsModalOpen}:
         }}>
           保存
         </StyleSaveButton>
-        {/*<button onClick={() => {*/}
-        {/*  setIsModalOpen(false);*/}
-        {/*  showCroppedImage();*/}
-        {/*}*/}
-        {/*}>保存</button>*/}
       </StyledControls>
     </>
   )

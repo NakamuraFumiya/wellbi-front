@@ -12,8 +12,9 @@ if (!NEXT_PUBLIC_API_HOST_URL) throw new Error('You must provide API_HOST_URL en
 type Props = {
   httpRequestHook: boolean;
   title: string;
+  imageURL: string;
 }
-export const HttpClientPlugin = ({httpRequestHook, title}: Props) => {
+export const HttpClientPlugin = ({httpRequestHook, title, imageURL}: Props) => {
   const [editor] = useLexicalComposerContext();
   const handler = (path: string) => {
     Router.push(path)
@@ -26,6 +27,9 @@ export const HttpClientPlugin = ({httpRequestHook, title}: Props) => {
       const data = new FormData();
       data.append("title", title);
       data.append("message", JSON.stringify(json.root.children))
+      if (imageURL) {
+        data.append("imageURL", imageURL)
+      }
       axios.post(`${NEXT_PUBLIC_API_HOST_URL}/api/posts`, data)
         .then((response) => console.log(response))
         .catch((error) => console.log(error));

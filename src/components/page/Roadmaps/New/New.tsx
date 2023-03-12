@@ -101,7 +101,7 @@ export const New = () => {
             </div>
             <AutoFocusPlugin />
             <HistoryPlugin />
-            <HttpClientPlugin httpRequestHook={httpRequestHook} title={title} />
+            <HttpClientPlugin httpRequestHook={httpRequestHook} title={title} imageURL={croppedRoadmapImage} />
           </LexicalComposer>
           <SpacerAtWriting />
         </>
