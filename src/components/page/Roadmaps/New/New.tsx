@@ -62,7 +62,6 @@ export const New = () => {
       >
         <ImageCropper imageURL={roadmapImage} setCroppedRoadmapImage={setCroppedRoadmapImage} setIsModalOpen={setIsModalOpen}/>
       </ModalContainer>
-      {/*<ModalContainer isOpen={isModalOpen} children={<img src={roadmapImage}/>}></ModalContainer>*/}
       {session ? (
         <>
           <Spacer />

@@ -23,6 +23,17 @@ const StyledControls = styled.div`
   align-items: center;
 `;
 
+const StyleSaveButton = styled.div`
+  color: white;
+  background-color: #FF6C6C;
+  font-size: 0.8rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-left: 3rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+`;
+
 type Props = {
   imageURL: string;
   setCroppedRoadmapImage: (promise: string) => void;
@@ -72,11 +83,17 @@ export const ImageCropper = ({imageURL, setCroppedRoadmapImage, setIsModalOpen}:
             setZoom(Number(e.target.value));
           }}
         />
-        <button onClick={() => {
+        <StyleSaveButton onClick={() => {
           setIsModalOpen(false);
           showCroppedImage();
-        }
-        }>保存</button>
+        }}>
+          保存
+        </StyleSaveButton>
+        {/*<button onClick={() => {*/}
+        {/*  setIsModalOpen(false);*/}
+        {/*  showCroppedImage();*/}
+        {/*}*/}
+        {/*}>保存</button>*/}
       </StyledControls>
     </>
   )
