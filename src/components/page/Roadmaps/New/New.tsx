@@ -19,6 +19,10 @@ const Spacer = styled.div`
   padding-top: 2.5rem;
 `;
 
+const SpacerAtWriting = styled.div`
+  height: 1000px;
+`;
+
 const initialConfig: ComponentProps<typeof LexicalComposer>["initialConfig"] = {
   namespace: "MyEditor",
   onError: (error) => console.error(error),
@@ -66,7 +70,7 @@ export const New = () => {
             document.getElementById("fileUpload")?.click();
           }}>
             {!!croppedRoadmapImage &&
-                <img src={croppedRoadmapImage}/>
+                <img src={croppedRoadmapImage} width={620} height={325}/>
             }
             <img src={"/images/common/icon/upload-image.png"} width={50} height={50}/>
           </button>
@@ -100,6 +104,7 @@ export const New = () => {
             <HistoryPlugin />
             <HttpClientPlugin httpRequestHook={httpRequestHook} title={title} />
           </LexicalComposer>
+          <SpacerAtWriting />
         </>
       ) : (
         <>
