@@ -3,12 +3,14 @@ export type RoadmapResponse = {
   ID: number;
   Title: string;
   Message: string;
+  ImageURL: string;
 }
 
 export type Roadmap = {
   ID: number;
   Title: string;
   Message: ElementNode[];
+  ImageURL: string;
 }
 
 export type ElementNode = {

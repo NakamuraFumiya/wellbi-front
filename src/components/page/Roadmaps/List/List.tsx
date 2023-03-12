@@ -24,7 +24,7 @@ const StyledItemContainer = styled.a`
 const StyledContentFlexBox = styled.div`
   display: flex;
   flex-wrap: wrap;
-  column-gap: 1rem;
+  column-gap: 2rem;
   padding-top: 5rem;
 `;
 
@@ -44,7 +44,7 @@ export const List = () => {
         JSON.parse(roadmap.Message).map((elementNode: ElementNode) => {
           elementNodes.push(elementNode)
         })
-        roadmapList.push({ ID: roadmap.ID, Title: roadmap.Title, Message: elementNodes })
+        roadmapList.push({ ID: roadmap.ID, Title: roadmap.Title, Message: elementNodes, ImageURL: roadmap.ImageURL })
       })
       setLoadmaps(roadmapList)
     }).catch((error) => {
@@ -63,7 +63,6 @@ export const List = () => {
             roadmaps.map((roadmap) => {
               return (
                   <StyledItemContainer onClick={() => handler(`/roadmaps/${roadmap.ID}`)} key={roadmap.ID}>
-                    <img src={"/images/pages/Roadmaps/List/default-item.png"} width={150} height={100}/>
                     <LoadmapRow roadmap={roadmap} />
                   </StyledItemContainer>
               )

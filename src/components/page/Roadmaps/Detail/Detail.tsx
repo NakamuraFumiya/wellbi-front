@@ -44,7 +44,7 @@ export const Detail = () => {
         JSON.parse(data.Message).map((elementNode: ElementNode) => {
           elementNodes.push(elementNode)
         })
-        setRoadmap({ID: data.ID, Title: data.Title, Message: elementNodes});
+        setRoadmap({ID: data.ID, Title: data.Title, Message: elementNodes, ImageURL: data.ImageURL});
       });
   }, [])
 
@@ -55,7 +55,9 @@ export const Detail = () => {
       {roadmap && (
         <StyledRoadmapContainer>
           <>
-            <img src={"/images/pages/Roadmaps/List/default-item.png"} width={650} height={340}/>
+            {roadmap.ImageURL &&
+              <img src={roadmap.ImageURL} width={620} height={325} />
+            }
 
             <StyledTitle>
               <h1>{roadmap.Title ? roadmap.Title : "記事タイトルなし"}</h1>
