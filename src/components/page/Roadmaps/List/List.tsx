@@ -36,6 +36,7 @@ export const List = () => {
   const { NEXT_PUBLIC_API_HOST_URL } = process.env;
 
   useEffect(() => {
+    console.log(NEXT_PUBLIC_API_HOST_URL);
     axios.get(`${NEXT_PUBLIC_API_HOST_URL}/api/posts`).then((response) => {
       const roadmapList: Roadmap[] = [];
       response.data.map((roadmap: RoadmapResponse) => {
