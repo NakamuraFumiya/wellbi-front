@@ -30,7 +30,7 @@ export const HttpClientPlugin = ({httpRequestHook, title, imageURL}: Props) => {
       if (imageURL) {
         data.append("imageURL", imageURL)
       }
-      axios.post(`${NEXT_PUBLIC_API_HOST_URL}/api/posts`, data)
+      axios.post(`${NEXT_PUBLIC_API_HOST_URL}/api/roadmaps`, data)
         .then((response) => console.log(response))
         .catch((error) => console.log(error));
       handler("/roadmaps/list");

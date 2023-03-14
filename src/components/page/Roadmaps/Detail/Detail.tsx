@@ -37,7 +37,7 @@ export const Detail = () => {
   const { NEXT_PUBLIC_API_HOST_URL } = process.env;
 
   useEffect(() => {
-    axios.get(`${NEXT_PUBLIC_API_HOST_URL}/api/posts/${roadmapID}`)
+    axios.get(`${NEXT_PUBLIC_API_HOST_URL}/api/roadmaps/${roadmapID}`)
       .then((response) => {
         const data = response.data;
         const elementNodes: ElementNode[] = []
